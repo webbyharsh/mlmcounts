@@ -1,0 +1,19 @@
+https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY&part=snippet,contentDetails,statistics,status
+	
+
+api key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4
+
+<iframe width="956" height="538" src="https://www.youtube.com/embed/kJQP7kiw5Fk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+realtime-views
+realtime-likes
+realtime-dislikes
+realtime-likes-increment
+realtime-dislieks-increment
+like-dislike-ratio
+time-unit 
+time-value
+
+CLVqCGokBco

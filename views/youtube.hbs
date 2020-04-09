@@ -1,0 +1,153 @@
+<div>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/video_analytics.js"></script>
+    <link rel="stylesheet" href="/css/custom.css" />
+    <link rel="stylesheet" href="/css/odometer.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+    <script src="/js/odometer.min.js"></script>
+<div class="page-header">
+    <div class="container-fluid">
+        <h2 id="page-header" class="h5 no-margin-bottom">Video Analytics</h2>
+    </div>
+</div>
+<style>
+  .odometer{
+    font-size: 30px;
+  }
+  .stats-2{
+    margin-right: auto;
+  }
+  #realtime-views{
+    color:cornflowerblue;
+    font-weight: 100;
+  }
+  .stats-3{
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+  .like{
+  }
+  .dislike{
+  }
+  #like-dislike-ratio{
+    font-size: 40px;
+    margin-bottom: 50%;
+  }
+</style>
+<section class="no-padding-top no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <div class="icon"><i class="icon-user-outline"></i></div><strong>Views</strong>
+                    </div>
+                    <div id='views' class="number dashtext-1">27</div>
+                  </div>
+                  {{!-- <div class="progress progress-template">
+                    <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
+                  </div> --}}
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <div class="icon"><i class="icon-chart"></i></div><strong>Likes</strong>
+                    </div>
+                    <div id='likes' class="number dashtext-2">375</div>
+                  </div>
+                  {{!-- <div class="progress progress-template">
+                    <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
+                  </div> --}}
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <div class="icon"><i class="icon-chart"></i></div><strong>Dislikes</strong>
+                    </div>
+                    <div id='dislikes' class="number dashtext-3">140</div>
+                  </div>
+                  {{!-- <div class="progress progress-template">
+                    <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+                  </div>--}}
+                </div> 
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <div class="icon"><i class="icon-new-file"></i></div><strong>Comments</strong>
+                    </div>
+                    <div id='comments' class="number dashtext-4">41</div>
+                  </div>
+                  {{!-- <div class="progress progress-template">
+                    <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+                  </div> --}}
+                </div>
+              </div>
+            </div>
+          </div>
+</section>
+
+
+
+{{!-- //Realtime section --}}
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="stats-2 block d-flex">
+                  <div class="stats-2 d-flex">
+                    <div class="stats-2-arrow low"><i class="fa fa-caret-down"></i></div>
+                    <div class="stats-2-content"><strong class="d-block"><div id="time-value"style="font-size:20px;">5657</div></strong><span id="time-unit" class="d-block">Standard Scans</span>
+                      <div class="progress progress-template progress-small">
+                        <div role="progressbar" style="width: 60%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template progress-bar-small dashbg-2"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stats-2 d-flex">
+                    {{!-- <div class="stats-2-arrow height"><i class="fa fa-caret-up"></i></div> --}}
+                    <div class="stats-2-content"><strong class="d-block"><div class="odometer" id="realtime-views">31459</div></strong><span class="d-block">Realtime views</span>
+                      <div class="progress progress-template progress-small">
+                        <div role="progressbar" style="width: 35%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template progress-bar-small dashbg-3"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="stats-3 block d-flex">
+                  <div>
+                  <div class="stats-3">
+                    <strong class="d-block" id="v"><div class="" id="like-dislike-ratio">0%</div></strong>
+                    <span class="d-block">Like Dislike ratio</span>
+                    <div class="progress progress-template progress-small">
+                      <div role="progressbar" id="ldrb"style="width: 35%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template progress-bar-small dashbg-1"></div>
+                    </div>
+                    
+                  </div>
+                  </div>
+                  <div class="stats-3 d-inline">
+                    <div class="item like"><strong class="strong-sm"><div id="realtime-likes" class="odometer" style="font-size: 25px;color:darkseagreen;font-weight:100;">500</div></strong><span class="d-block span-sm">Likes</span>
+                      <div class="line"></div><small id="realtime-likes-increment">+246</small>
+                    </div>
+                    <hr />
+                    <div class="item dislike"><strong class="strong-sm"><div id="realtime-dislikes" class="odometer" style="font-size:25px;color:indianred;font-weight:100;">250</div></strong><span class="d-block span-sm">Dislikes</span>
+                      <div class="line"></div><small id="realtime-dislikes-increment">+416</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="drills-chart block">
+                  <iframe class="drills-chart" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="lineChart1"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+</div>
