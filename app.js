@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/yt');
 
 var app = express();
+app.listen(process.env.PORT||3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +38,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(3000||process.env.PORT);
 app.get('/yts/:id',(req,res)=>{
   res.render('error');
 });
