@@ -98,7 +98,7 @@ function retAggregate(number){
 setInterval(function(){
     getData(video_id);
    // updateRealTimeData(data);
-},10000);
+},15000);
 
 setInterval(function(){
     $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,contentDetails,statistics,status",(data)=>{
