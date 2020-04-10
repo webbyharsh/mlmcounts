@@ -15,7 +15,7 @@ var client = new Twitter({
   access_token_secret: accesstokensecret
 });
 
-var users_param={screen_name:"narendramodi"};
+//var users_param={screen_name:"narendramodi"};
 
 router.get('/',(req,res,next)=>{
     ///res.render('twitter-home');
