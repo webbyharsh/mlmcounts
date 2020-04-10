@@ -98,16 +98,16 @@ function retAggregate(number){
 setInterval(function(){
     getData(video_id);
    // updateRealTimeData(data);
-},15000);
+},25000);
 
 setInterval(function(){
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,contentDetails,statistics,status",(data)=>{
+    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,statistics,status",(data)=>{
         //console.log(data);
         //gd=data;
         setVariables(data);
         //console.log(data);
     });
-},45000);
+},50000);
 
 function updateRealTimeData(data){
     liveViewCount.html(data.items[0].statistics.viewCount);
