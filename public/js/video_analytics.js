@@ -1,12 +1,30 @@
 var video_id=window.location.pathname.split('/yt/')[1];
+var likes_when_loaded;
+var dislikes_when_loaded;
+var title;
+var publishedAt;
+
     
 $(document).ready(()=>{
+    $("#youtube-home").addClass('active');
+    $("#twitter-home").removeClass('active');
     //var data=getData(video_id);
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,contentDetails,statistics,status",(data)=>{
+    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,statistics",(data)=>{
         //console.log(data);
         //gd=data;
         setVariables(data);
         console.log(data);
+        var p=[];
+    p=getTimePassed(data.items[0].snippet.publishedAt);
+    $("#time-value").text(p[0]);
+    $("#time-unit").html(p[1]+" ago");
+    console.log(p);
+        likes_when_loaded=data.items[0].statistics.likeCount;
+        dislikes_when_loaded=data.items[0].statistics.dislikeCount;
+        title=data.items[0].snippet.title;
+        publishedAt=data.items[0].snippet.publishedAt;
+        $("#realtime-likes-increment").text(0);
+        $("#realtime-dislikes-increment").text(0);
     });
     $("#lineChart1").css("width","100%");
     $("#lineChart1").css("height","320px");
@@ -17,10 +35,11 @@ $(document).ready(()=>{
     likedislikeratio=$("#like-dislike-ratio");
     timevalue=$("#time-value");
     timeunit=$("#time-unit");
+    
 });
 function getData(video_id){
     var gd;
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,contentDetails,statistics,status",(data)=>{
+    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=statistics",(data)=>{
         updateRealTimeData(data);
     });
 }
@@ -38,13 +57,17 @@ var timeUploaded;
 var timeunit;
 
 function setVariables(data){
-    page_header=data.items[0].snippet.title;
+    //page_header=data.items[0].snippet.title;
+    page_header=title;
+
     likes=data.items[0].statistics.likeCount;
     views=data.items[0].statistics.viewCount;
     dislikes=data.items[0].statistics.dislikeCount;
     comments=data.items[0].statistics.commentCount;
-    timeUploaded=data.items[0].snippet.publishedAt;
+    //timeUploaded=data.items[0].snippet.publishedAt;
+    timeUploaded=publishedAt;
     displayData();
+    
 }
 
 function displayData(){
@@ -61,8 +84,10 @@ function displayData(){
     $("#ldrb").css('width',(p1*100)+"%");
     var t=[];
     t=getTimePassed(timeUploaded);
-    timevalue.html(t[0]);
+    timevalue.text(t[0]);
     timeunit.html(t[1]+" ago");
+    $("#realtime-likes-increment").text("+"+likes-likes_when_loaded);
+    $("#realtime-dislikes-increment").text("+"+parseInt(dislikes)-parseInt(dislikes_when_loaded));
 }
 
 function retAggregate(number){
@@ -98,16 +123,16 @@ function retAggregate(number){
 setInterval(function(){
     getData(video_id);
    // updateRealTimeData(data);
-},25000);
+},50000);
 
 setInterval(function(){
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,statistics,status",(data)=>{
+    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=statistics",(data)=>{
         //console.log(data);
         //gd=data;
         setVariables(data);
         //console.log(data);
     });
-},50000);
+},20000);
 
 function updateRealTimeData(data){
     liveViewCount.html(data.items[0].statistics.viewCount);

@@ -3,7 +3,11 @@ var user,followers,following,p_img_link,t_id,tst,t_tweets,t_following,t_des;
 var d;
 var api=window.location.origin+"/twit/api/?name="+t_user;
 
+
 $(document).ready(function(){
+    
+    changeActiveLink();
+    console.log('gsgdffg');
    user=$("#t_user");
    console.log(window.location.origin+"/twit/api/?name="+t_user);
  followers=$("#t_followers");
@@ -31,6 +35,9 @@ $(document).ready(function(){
         
         //od.update(d.followers_count);
 
+
+        
+
     });
 
     
@@ -52,6 +59,13 @@ setInterval(function(){
 
 });
 
+
+function changeActiveLink(){
+    $("#twitter-home").addClass('active');
+    $("#youtube-home").removeClass('active');
+    console.log('test');
+
+}
 
 
 function setData(d1,d2,d3,d4,d5,d6,d7){
