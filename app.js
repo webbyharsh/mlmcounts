@@ -44,8 +44,8 @@ app.use(function(err, req, res, next) {
 app.get('/yts/:id',(req,res)=>{
   res.render('error');
 });
-app.get('/sitemap',(req,res)=>{
-  res.send('/sitemap/sitemap.xml');
-})
+// app.get('/sitemap',(req,res)=>{
+//   res.send('/sitemap/sitemap.xml');
+// })
 
 module.exports = app;
