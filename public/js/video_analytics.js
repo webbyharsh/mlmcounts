@@ -25,6 +25,7 @@ $(document).ready(()=>{
         publishedAt=data.items[0].snippet.publishedAt;
         $("#realtime-likes-increment").text(0);
         $("#realtime-dislikes-increment").text(0);
+        $("#page-header").html(data.items[0].snippet.title);
     });
     $("#lineChart1").css("width","100%");
     $("#lineChart1").css("height","320px");
@@ -35,6 +36,8 @@ $(document).ready(()=>{
     likedislikeratio=$("#like-dislike-ratio");
     timevalue=$("#time-value");
     timeunit=$("#time-unit");
+    
+
     
 });
 function getData(video_id){
