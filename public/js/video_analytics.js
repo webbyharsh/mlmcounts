@@ -5,7 +5,7 @@ var title;
 var publishedAt;
 //document.title("");
     
-keywords='live view count for youtube, realtime youtube view counter, live view count youtube,live view counter youtube,youtube live view count, youtube live view count boy with luv, live view count on youtube, live view count on bts, ';
+var keywords='live view count for youtube, realtime youtube view counter, live view count youtube,live view counter youtube,youtube live view count, youtube live view count boy with luv, live view count on youtube, live view count on bts, ';
 
 
 $("meta[name=keywords]").attr('content',keywords);
