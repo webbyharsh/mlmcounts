@@ -3,8 +3,14 @@ var likes_when_loaded;
 var dislikes_when_loaded;
 var title;
 var publishedAt;
-
+//document.title("");
     
+keywords='live view count for youtube, realtime youtube view counter, live view count youtube,live view counter youtube,youtube live view count, youtube live view count boy with luv, live view count on youtube, live view count on bts, ';
+
+
+$("meta[name=keywords]").attr('content',keywords);
+
+var $meta = $('meta[name=description]').attr('content', 'Fastest and the most acccurate way to get live view count from youtube about any video. The page refreshes every 20 seconds. Get realtime like count of any video ');
 $(document).ready(()=>{
     $("#youtube-home").addClass('active');
     $("#twitter-home").removeClass('active');
@@ -26,6 +32,8 @@ $(document).ready(()=>{
         $("#realtime-likes-increment").text(0);
         $("#realtime-dislikes-increment").text(0);
         $("#page-header").html(data.items[0].snippet.title);
+        document.title=data.items[0].snippet.title+"-live view count from youtube";
+        
     });
     $("#lineChart1").css("width","100%");
     $("#lineChart1").css("height","320px");
