@@ -5,12 +5,14 @@ var title;
 var publishedAt;
 //document.title("");
     
-var keywords='live view count for youtube, realtime youtube view counter, live view count youtube,live view counter youtube,youtube live view count, youtube live view count boy with luv, live view count on youtube, live view count on bts, ';
+
+
+var keywords='youtube live view count,live view count for youtube,live view count youtube video,youtube live stream view count,youtube live view count on bts,youtube live view count boy with luv,youtube live view count bts on official mv,youtube live view count bhula dunga,youtube live view count bts black swan,live view count for youtube video,bts on youtube live view count,youtube video statistics live view count,youtube live views counter,youtube live view count of bhula dunga,youtube live view count the man,how to see youtube live view count,youtube live view count of kalla sohna nai,youtube live view count bts on,youtube live view count for bts on,live youtube view count james charles,youtube live view count deleted views,live youtube channel view count';
 
 
 $("meta[name=keywords]").attr('content',keywords);
 
-var $meta = $('meta[name=description]').attr('content', 'Fastest and the most acccurate way to get live view count from youtube about any video. The page refreshes every 20 seconds. Get realtime like count of any video ');
+var $meta = $('meta[name=description]').attr('content', 'Fastest and the most acccurate way to get live view count from youtube about any video. 100% accurate result. As Youtube do not update views in realtime, get realtime view count here.');
 $(document).ready(()=>{
     $("#youtube-home").addClass('active');
     $("#twitter-home").removeClass('active');
