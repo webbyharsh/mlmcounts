@@ -1,10 +1,13 @@
 
 <div class="container-fluid">
 <div class=" stats-2 block">
-<h2>Twitter live follower count</h2>
+<h1>Twitter live follower count</h1>
 <div class="form-group">
     <form id="t_user_search" action="/twit/">
     <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
+        </div>
       <input type="text" class="form-control" name="username" placeholder="Search for the twitter username">
       <div class="input-group-append">
        <button type="submit" class="btn btn-primary">Go!</button>
@@ -13,20 +16,69 @@
     </form>
     </div>
 
-    <p>Get live folloer count for any twitter personality simply by typing the username of the person and clicking Go.
+    <p>Get live follower count for any twitter personality simply by typing the username of the person and clicking Go.
         Twitter does not update follower count realtime so you can get live follower count for twitter on this website.
+    </p>
+    <h2>How does twitter live count works?</h2>
+    <p>The live count makes use of twitter public data API provided by Twitter developer tools. The data obtained is requested every second to update follower count and you don't need to refresh the page.
+        So by this method you can get realtime followers count for any twitter account.
     </p>
 
 </div>
+<h2>Some suggestions of popular twitter accounts</h2>
+ <div class="table-responsive">
+            <table class='table'>
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Twitter User</th>
+                      <th>User ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Barack Obama</td>
+                          <td><a href="/twit/?username=barackobama">BarackObama</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Justin Bieber</td>
+                          <td><a href="/twit/?username=justinbieber">justinbieber</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Katy Perry</td>
+                          <td><a href="/twit/?username=katyperry">katyperry</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Rihanna</td>
+                          <td><a href="/twit/?username=rihanna">rihanna</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>Taylor Swift</td>
+                          <td><a href="/twit/?username=taylorswift13">taylorswift13</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>Cristiano Ronaldo</td>
+                          <td><a href="/twit/?username=cristiano">Cristiano</a></td>
+                        </tr>
+
+                </tbody>
+            </table>
+    </div>
 </div>
 
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
      $("#twitter-home").addClass('active');
     $("#youtube-home").removeClass('active');
-    var keywords="twitter live follower count,ethan dolan live twitter follower count,twitter live follower count bts,grayson dolan live twitter follower count,twitter live follower count shopee philippines,live twitter follower count lfc,exo twitter followers live count,james charles twitter follower count live,live twitter follower count bambam1a,tyler joseph live twitter follower count,twitter live follower count cnn türk";
-    var $meta = $('meta[name=description]').attr('content', 'Get twitter live follower count with 100% accuracy');
-    document.title="MLM counts-Twitter live follower count";
+    var keywords="twitter live follower count,twitter live follower count,realtime followers count, twitter count, tweet, realtime, live statistics";
+    var $meta = $('meta[name=description]').attr('content', 'Get twitter live follower count with this freely available tool,page updated every second.');
+    document.title="Twitter live follower count- MLM counts";
     $("meta[name=keywords]").attr('content',keywords);
 
 </script>
