@@ -28,7 +28,7 @@ $(document).ready(function(){
         var d5=data.friends_count;
         var d6=data.statuses_count;
         var d7=data.description;
-        document.title=d4+"-Twitter live follower count by MLM counts"
+        document.title=d4+"-Live Twitter follower count by MLM counts"
         setData(d1,d2,d3,d4,d5,d6,d7);
         d=data;
         //tst.text(parseInt(d2));
