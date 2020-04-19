@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/yt');
 var twitterRouter=require('./routes/twit');
 var instaRouter=require('./routes/insta');
+var test= require('./routes/ytsub');
 
 
 var app = express();
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/yt', usersRouter);
 app.use('/twit',twitterRouter);
 app.use('/insta',instaRouter);
+app.use('/live-sub-count',test);
 
 
 // catch 404 and forward to error handler

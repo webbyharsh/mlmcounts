@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="/css/odometer.css">
+<script src="/js/odometer.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/js/ytsubcount.js"></script>
+
+<style>
+    .odometer{
+    font-size:80px;        
+
+    }
+    .channel-thumbnail{
+        width:100px;
+        height:100px;
+    }
+    @media only screen and (max-width: 600px) {
+  .odometer {
+    font-size:35px;
+  }
+}
+</style>
+
+<div class="container">
+<div class="block" >
+    <img id="hbanner" style="width:100%;height:200px"src="https://png.pngtree.com/thumb_back/fh260/back_pic/00/02/44/5056179b42b174f.jpg" alt="">
+</div>
+
+<div class="block">
+    <div class="row">
+        <div class="col-6 ">
+            <div class="">
+            <div style="margin-left: 40px;">
+                <img id="hprofile" class=" rounded-circle channel-thumbnail" src="https://www.seekpng.com/png/detail/375-3750832_youtube-play-button-transparent-youtube-logo-100x100-png.png" alt="channel thumbnail">
+            </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h3 id="cname">Channel Name</h3>
+            <div id="hsubs" class="subs odometer">4252525</div>
+            <span class="small">Subscribers</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="block">
+            <h2 id="hviews" style="text-align: center">244,245,252</h2>
+            <h6 style="text-align: center">views</h6>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="block">
+            <h2 id="huploads" style="text-align: center">150</h2>
+            <h6 style="text-align:center">uploads</h6>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="block ">
+    <div class="row">
+    <div class="col-4">
+        <button class="btn btn-primary">share</button>
+    </div>
+    <div class="col-4">
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Change User</button>
+        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Search channel URL,channel ID,channel Name</strong>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label>Search</label>
+                                <input type="text"  id="input_q" placeholder="Search channel URL,channel ID,channel Name" class="form-control">
+                              </div>
+                              <div class="form-group">       
+                                <input id="s1" type="button" value="Search" class="btn btn-primary">
+                              </div>
+                            </form>
+                            <div id="channel_search"></div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary" >Close</button>
+                            {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-primary">subscribe</button>
+    </div>
+    </div>
+</div>
+
+</div>
+<script>
+  function clear(){
+    $("#channel_search").append("");
+  }
+</script>
