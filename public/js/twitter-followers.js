@@ -1,14 +1,15 @@
 var t_user=window.location.search.split('?username=')[1];
 var user,followers,following,p_img_link,t_id,tst,t_tweets,t_following,t_des;
 var d;
-var api=window.location.origin+"/twit/api/?name="+t_user;
+var api=window.location.origin+"/twitter/api/?name="+t_user;
+
 
 
 $(document).ready(function(){
     changeActiveLink();
     console.log('gsgdffg');
    user=$("#t_user");
-   console.log(window.location.origin+"/twit/api/?name="+t_user);
+   console.log(window.location.origin+"/twitter/api/?name="+t_user);
  followers=$("#t_followers");
  following=$("#t_following");
  p_img_link=$("#t_profile_img");

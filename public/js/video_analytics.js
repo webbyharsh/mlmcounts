@@ -1,4 +1,4 @@
-var video_id=window.location.pathname.split('/yt/')[1];
+var video_id=window.location.pathname.split('/youtube/')[1];
 var likes_when_loaded;
 var dislikes_when_loaded;
 var title;

@@ -25,9 +25,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/yt', usersRouter);
-app.use('/twit',twitterRouter);
-app.use('/insta',instaRouter);
+app.use('/youtube', usersRouter);
+app.use('/twitter',twitterRouter);
+app.use('/instagram',instaRouter);
 app.use('/live-sub-count',test);
 
 
@@ -46,11 +46,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 app.get('/yts/:id',(req,res)=>{
   res.render('error');
 });
 // app.get('/sitemap',(req,res)=>{
 //   res.send('/sitemap/sitemap.xml');
 // })
+
 
 module.exports = app;

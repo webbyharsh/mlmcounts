@@ -8,6 +8,11 @@ var key="&key=AIzaSyADEzHGrTcerS9fryji1_PkVsDrlkoTSE4";
 var s_initial="https://www.googleapis.com/youtube/v3/search?part=snippet&&maxResults=40&q="
 var channelID=window.location.pathname.split("/live-sub-count/")[1];
 
+document.title="YouTube live subscriber count by MLM counts"
+
+var keywords="live sub count,youtube live sub count,youtube live subscriber count,live count,livecounts,count,youtube,youtube live,realtime"
+$("meta[name=keywords]").attr('content',keywords);
+var $meta = $('meta[name=description]').attr('content', 'Easiest way to get live sub count for any youtube channel out there. Just enter the name of the channel and you can see live sub count for that channel. ');
 
 $(document).ready(function (){
     banner=document.getElementById("hbanner");
@@ -17,11 +22,18 @@ $(document).ready(function (){
     subs=document.getElementById("hsubs");
     n=document.getElementById("cname");
 
+    if(window.location.pathname.split("/live-sub-count")[1]==""){
+        window.location.href="/live-sub-count/UC-lHJZR3Gqxm24_Vd_AJ5Yw";
+        console.log("fsf");
+    }
+
     if(channelID.length==24){
         showChannel();
     }else{
         location.replace("UC-lHJZR3Gqxm24_Vd_AJ5Yw");
     }
+
+   
 
     $("#s1").click(function(){
         var a=$("#input_q").val();

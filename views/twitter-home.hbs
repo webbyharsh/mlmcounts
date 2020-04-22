@@ -3,7 +3,7 @@
 <div class=" stats-2 block">
 <h1>Live Twitter follower count</h1>
 <div class="form-group">
-    <form id="t_user_search" action="/twit/">
+    <form id="t_user_search" action="/twitter/">
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text">@</span>
@@ -39,32 +39,32 @@
                         <tr>
                           <th scope="row">1</th>
                           <td>Barack Obama</td>
-                          <td><a href="/twit/?username=barackobama">BarackObama</a></td>
+                          <td><a href="/twitter/?username=barackobama">BarackObama</a></td>
                         </tr>
                         <tr>
                           <th scope="row">2</th>
                           <td>Justin Bieber</td>
-                          <td><a href="/twit/?username=justinbieber">justinbieber</a></td>
+                          <td><a href="/twitter/?username=justinbieber">justinbieber</a></td>
                         </tr>
                         <tr>
                           <th scope="row">3</th>
                           <td>Katy Perry</td>
-                          <td><a href="/twit/?username=katyperry">katyperry</a></td>
+                          <td><a href="/twitter/?username=katyperry">katyperry</a></td>
                         </tr>
                         <tr>
                           <th scope="row">4</th>
                           <td>Rihanna</td>
-                          <td><a href="/twit/?username=rihanna">rihanna</a></td>
+                          <td><a href="/twitter/?username=rihanna">rihanna</a></td>
                         </tr>
                         <tr>
                           <th scope="row">5</th>
                           <td>Taylor Swift</td>
-                          <td><a href="/twit/?username=taylorswift13">taylorswift13</a></td>
+                          <td><a href="/twitter/?username=taylorswift13">taylorswift13</a></td>
                         </tr>
                         <tr>
                           <th scope="row">6</th>
                           <td>Cristiano Ronaldo</td>
-                          <td><a href="/twit/?username=cristiano">Cristiano</a></td>
+                          <td><a href="/twitter/?username=cristiano">Cristiano</a></td>
                         </tr>
 
                 </tbody>
@@ -74,8 +74,10 @@
 
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
-     $("#twitter-home").addClass('active');
+    $("#twitter-home").addClass('active');
     $("#youtube-home").removeClass('active');
+    $("#ytsub-home").removeClass("active");
+    $("#instagram-home").removeClass("active");
     var keywords="twitter live follower count,twitter live follower count,realtime followers count, twitter count, tweet, realtime, live statistics";
     var $meta = $('meta[name=description]').attr('content', 'Get twitter live follower count with this freely available tool,page updated every second.');
     document.title="Twitter live follower count- MLM counts";
