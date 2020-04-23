@@ -1,4 +1,4 @@
-var video_id=window.location.pathname.split('/youtube/')[1];
+var video_id=window.location.pathname.split('/live-view-count/')[1];
 var likes_when_loaded;
 var dislikes_when_loaded;
 var title;
@@ -11,7 +11,7 @@ var keywords="youtube live view count,youtube view count,youtube realtime views,
 document.title="YouTube live view count by MLM counts";
 $("meta[name=keywords]").attr('content',keywords);
 
-var $meta = $('meta[name=description]').attr('content', 'Easily get live view count for any youtube video. Now you can get realtime view,likes,dislikes count for any youtube video');
+var $meta = $('meta[name=description]').attr('content', 'Free tool to get live view count for a youtube video. Just type in the name of the video and you are good to go. The view count updates every 2 seconds with a added feature of dark mode. You can also get live like and dislike counts.');
 
 $(document).ready(()=>{
     $("#youtube-home").addClass('active');

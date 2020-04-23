@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/youtube', usersRouter);
+app.use('/live-view-count', usersRouter);
 app.use('/twitter',twitterRouter);
 app.use('/instagram',instaRouter);
 app.use('/live-sub-count',test);
