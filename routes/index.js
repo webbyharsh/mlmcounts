@@ -10,4 +10,8 @@ router.get('/privacy-policy',(req,res)=>{
   //res.send("FFKJFHSJLF");
 })
 
+
+router.get("/health", (req, res) => {
+  res.send("Site is up");
+})
 module.exports = router;
