@@ -1,22 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var Twitter=require('twitter');
 const fetch = require('node-fetch');
 
 var environment = require('dotenv').config({ path: './security/process.env' })
 
-var accesstoken = environment.parsed.TWITTER_ACCESS_TOKEN;
-var accesstokensecret = environment.parsed.TWITTER_ACCESS_TOKEN_SECRET;
-var apikey = environment.parsed.TWITTER_API_KEY;
-var apisecretkey = environment.parsed.TWITTER_API_KEY_SECRET;
 
-var client = new Twitter({
-  consumer_key: apikey,
-  consumer_secret: apisecretkey,
-  access_token_key: accesstoken,
-  access_token_secret: accesstokensecret
-});
 
 
 

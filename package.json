@@ -16,8 +16,6 @@
     "jquery": "^3.6.3",
     "jsdom": "^19.0.0",
     "morgan": "~1.9.1",
-    "node-fetch": "^2.0.0",
-    "twit": "^2.2.11",
-    "twitter": "^1.7.1"
+    "node-fetch": "^2.0.0"
   }
 }
