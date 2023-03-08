@@ -4,6 +4,8 @@ var dislikes_when_loaded;
 var title;
 var publishedAt;
 //document.title("");
+
+var apiCallUrl = window.location.protocol + "//" + window.location.host + "/live-view-count/api/v2/";
     
 
 
@@ -17,15 +19,17 @@ $(document).ready(()=>{
     $("#youtube-home").addClass('active');
     $("#twitter-home").removeClass('active');
     //var data=getData(video_id);
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=snippet,statistics",(data)=>{
+    $.getJSON(apiCallUrl + video_id,(data)=>{
         //console.log(data);
         //gd=data;
         setVariables(data);
         console.log(data);
         var p=[];
-    p=getTimePassed(data.items[0].snippet.publishedAt);
+    p=getTimePassed(data.items[0].snippet.publishedAt, false);
     $("#time-value").text(p[0]);
     $("#time-unit").html(p[1]+" ago");
+    y=getTimePassed(data.items[0].snippet.publishedAt, true);
+    $("#joinedAt").html(parseInt(y[0]) + y[1]);
     console.log(p);
         likes_when_loaded=data.items[0].statistics.likeCount;
         dislikes_when_loaded=data.items[0].statistics.dislikeCount;
@@ -52,7 +56,7 @@ $(document).ready(()=>{
 });
 function getData(video_id){
     var gd;
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=statistics",(data)=>{
+    $.getJSON(apiCallUrl + video_id,(data)=>{
         updateRealTimeData(data);
     });
 }
@@ -61,6 +65,7 @@ var views=0;
 var likes=0;
 var dislikes=0;
 var comments=0;
+var timePassed=0;
 var liveViewCount;
 var liveLikeCount;
 var liveDisLikeCount;
@@ -75,7 +80,7 @@ function setVariables(data){
 
     likes=data.items[0].statistics.likeCount;
     views=data.items[0].statistics.viewCount;
-    dislikes=data.items[0].statistics.dislikeCount;
+    // dislikes=data.items[0].statistics.dislikeCount;
     comments=data.items[0].statistics.commentCount;
     //timeUploaded=data.items[0].snippet.publishedAt;
     timeUploaded=publishedAt;
@@ -87,20 +92,22 @@ function displayData(){
     $("#page-header").html(page_header);;
     $("#views").html(retAggregate(views));
     $("#likes").html(retAggregate(likes));
-    $("#dislikes").html(retAggregate(dislikes));
+    // $("#dislikes").html(retAggregate(dislikes));
     $("#comments").html(retAggregate(comments));
     liveViewCount.html(views);
     liveLikeCount.html(likes);
-    liveDisLikeCount.html(dislikes);
-    var p1=parseInt(likes)/(parseInt(likes)+parseInt(dislikes));
-    likedislikeratio.html((p1*100).toPrecision(3)+"%");
-    $("#ldrb").css('width',(p1*100)+"%");
+    // liveDisLikeCount.html(dislikes);
+    // var p1=parseInt(likes)/(parseInt(likes)+parseInt(dislikes));
+    // likedislikeratio.html((p1*100).toPrecision(3)+"%");
+    // $("#ldrb").css('width',(p1*100)+"%");
     var t=[];
-    t=getTimePassed(timeUploaded);
+    t=getTimePassed(timeUploaded, false);
     timevalue.text(t[0]);
     timeunit.html(t[1]+" ago");
+    y=getTimePassed(timeUploaded, true);
+    $("#joinedAt").html(parseInt(y[0]) + y[1]);
     $("#realtime-likes-increment").text("+"+likes-likes_when_loaded);
-    $("#realtime-dislikes-increment").text("+"+parseInt(dislikes)-parseInt(dislikes_when_loaded));
+    // $("#realtime-dislikes-increment").text("+"+parseInt(dislikes)-parseInt(dislikes_when_loaded));
 }
 
 function retAggregate(number){
@@ -139,7 +146,7 @@ setInterval(function(){
 },50000);
 
 setInterval(function(){
-    $.getJSON("https://www.googleapis.com/youtube/v3/videos?id="+video_id+"&key=AIzaSyBGsYfqDVnCW291wVJfc-h3QN89pe9q-k4&part=statistics",(data)=>{
+    $.getJSON(apiCallUrl + video_id,(data)=>{
         //console.log(data);
         //gd=data;
         setVariables(data);
@@ -150,19 +157,21 @@ setInterval(function(){
 function updateRealTimeData(data){
     liveViewCount.html(data.items[0].statistics.viewCount);
     liveLikeCount.html(data.items[0].statistics.likeCount);
-    liveDisLikeCount.html(data.items[0].statistics.dislikeCount);
+    // liveDisLikeCount.html(data.items[0].statistics.dislikeCount);
     var l=data.items[0].statistics.likeCount;
-    var d=data.items[0].statistics.dislikeCount;
-    var p=((parseInt(l)*100/(parseInt(d)+parseInt(l))));
-    likedislikeratio.html(p.toPrecision(3)+"%");
-    $("#ldrb").css('width',p+"%");
+    // var d=data.items[0].statistics.dislikeCount;
+    // var p=((parseInt(l)*100/(parseInt(d)+parseInt(l))));
+    // likedislikeratio.html(p.toPrecision(3)+"%");
+    // $("#ldrb").css('width',p+"%");
     var t=[];
-    t=getTimePassed(timeUploaded);
+    t=getTimePassed(timeUploaded, false);
     timevalue.html(t[0]);
     timeunit.html(t[1]+" ago");
+    y=getTimePassed(timeUploaded, true);
+    $("#joinedAt").html(parseInt(y[0]) + y[1]);
 }
 
-function getTimePassed(date_string){
+function getTimePassed(date_string, isShort){
     var date1=new Date(date_string);
     var unit="";
     var date2=new Date();
@@ -171,30 +180,51 @@ function getTimePassed(date_string){
     var diff=d2-d1;
     if(diff<=60*1000){
         unit="seconds";
+        if(isShort){
+            unit = "s";
+        }
         diff=diff/1000;
     }
     else if(diff<=60*60*1000){
         unit="minutes";
+        if(isShort){
+            unit = "m";
+        }
         diff=diff/(60*1000);
     }
     else if(diff<=3600*1000*24){
         unit="hours";
+        if(isShort){
+            unit = "H";
+        }
         diff=diff/(3600*1000);
     }
     else if(diff<=7*1000*3600*24){
         unit="days";
+        if(isShort){
+            unit = "D";
+        }
         diff=diff/(1000*24*3600);
     }
     else if(diff<=31*1000*3600*24){
         unit="weeks";
+        if(isShort){
+            unit = "W";
+        }
         diff=diff/(7*1000*3600*24);
     }
     else if(diff<=3600*1000*365*24){
         unit="months";
+        if(isShort){
+            unit = "M";
+        }
         diff=diff/(1000*3600*24*31);
     }
     else if(diff>3600*1000*365*24){
         unit="years";
+        if(isShort){
+            unit = "Y";
+        }
         diff=diff/(1000*3600*24*365);
     }
     return [diff.toPrecision(2),unit];

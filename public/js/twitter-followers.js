@@ -1,7 +1,10 @@
 var t_user=window.location.search.split('?username=')[1];
 var user,followers,following,p_img_link,t_id,tst,t_tweets,t_following,t_des;
 var d;
-var api=window.location.origin+"/twitter/api/?name="+t_user;
+var apiv2=window.location.origin+"/twitter/api/v2/?name="+t_user;
+// var api=window.location.origin+"/twitter/api/?name="+t_user;
+var api = apiv2;
+
 
 
 
@@ -22,12 +25,13 @@ $(document).ready(function(){
     var api_endpoint="http://localhost:3000/twit/api/?name="+t_user;
     $.get(api,(data)=>{
         console.log(data);
+        data = data.data;
         var d1=data.name;
-        var d2=data.followers_count;
-        var d3=data.profile_image_url_https;
-        var d4=data.screen_name;
-        var d5=data.friends_count;
-        var d6=data.statuses_count;
+        var d2=data.public_metrics.followers_count;
+        var d3=data.profile_image_url;
+        var d4=data.name;
+        var d5=data.public_metrics.following_count;
+        var d6=data.public_metrics.tweet_count;
         var d7=data.description;
         document.title=d4+"-Live Twitter follower count by MLM counts"
         setData(d1,d2,d3,d4,d5,d6,d7);
@@ -44,13 +48,15 @@ $(document).ready(function(){
     
 
 setInterval(function(){
-    var api_endpoint="http://localhost:3000/twit/api/?name="+t_user;
+    // var api_endpoint="http://localhost:3000/twit/api/?name="+t_user;
     $.get(api,(data)=>{
         //console.log(data);
+        data = data.data;
+
         var d1=data.name;
-        var d2=data.followers_count;
-        var d3=data.profile_image_url_https;
-        var d4=data.screen_name;
+        var d2=data.public_metrics.followers_count;
+        var d3=data.profile_image_url;
+        var d4=data.name;
 
         //setData(d1,d2,d3,d4);
         document.getElementById('t_followers').innerHTML=data.followers_count;

@@ -4,7 +4,7 @@ var t_views;
 var uploads;
 var n;
 var propic;
-var key="&key=AIzaSyADEzHGrTcerS9fryji1_PkVsDrlkoTSE4";
+var key="&key=";//Key removed from here as it is not required for search
 var s_initial="https://www.googleapis.com/youtube/v3/search?part=snippet&&maxResults=40&q="
 var channelID=window.location.pathname.split("/live-sub-count/")[1];
 
@@ -24,7 +24,6 @@ $(document).ready(function (){
 
     if(window.location.pathname.split("/live-sub-count")[1]==""){
         window.location.href="/live-sub-count/UC-lHJZR3Gqxm24_Vd_AJ5Yw";
-        console.log("fsf");
     }
 
     if(channelID.length==24){
@@ -72,14 +71,15 @@ var f="https://www.googleapis.com/youtube/v3/channels?part=statistics&id=";
 
 
 function showChannel(){
-    $.get(channelinitial+channelID+key,(data)=>{
+    var apiCallUrl = window.location.protocol + "//" + window.location.host + "/live-sub-count/api/v2/";
+    $.get(apiCallUrl + channelID,(data)=>{
         console.log(data);
         var p=data.items[0].snippet.thumbnails.default.url;
         var t=data.items[0].snippet.title;
         var is=data.items[0].statistics.subscriberCount;
         var iv=data.items[0].statistics.viewCount;
         var iu=data.items[0].statistics.videoCount;
-        var ib=data.items[0].brandingSettings.image.bannerImageUrl;
+        var ib=data.items[0].brandingSettings.image.bannerExternalUrl;
         // banner.attr("src",ib);
         banner.setAttribute("src",ib);
         // propic.attr("src",p);
@@ -93,7 +93,7 @@ function showChannel(){
         $.get(f+channelID+key,(data)=>{
             subs.innerHTML= data.items[0].statistics.subscriberCount;
         });
-    },3000)
+    },60000)
 }
 
 function numberWithCommas(x) {

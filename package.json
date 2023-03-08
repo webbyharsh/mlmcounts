@@ -4,16 +4,18 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "npm install node app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
+    "jquery": "^3.6.3",
+    "jsdom": "^19.0.0",
     "morgan": "~1.9.1",
-    "twit": "^2.2.11",
-    "twitter": "^1.7.1"
+    "node-fetch": "^2.0.0"
   }
 }

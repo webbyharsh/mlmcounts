@@ -68,9 +68,9 @@
                 <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
                     <div class="title">
-                      <div class="icon"><i class="icon-chart"></i></div><strong>Dislikes</strong>
+                      <div class="icon"><i class="icon-chart"></i></div><strong>Joined</strong>
                     </div>
-                    <div id='dislikes' class="number dashtext-3">140</div>
+                    <div id='joinedAt' class="number dashtext-3">140</div>
                   </div>
                   {{!-- <div class="progress progress-template">
                     <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
@@ -120,7 +120,7 @@
                   </div>
                 </div>
                 <div class="stats-3 block d-flex">
-                  <div>
+                  {{!-- <div>
                   <div class="stats-3">
                     <strong class="d-block" id="v"><div class="" id="like-dislike-ratio">0%</div></strong>
                     <span class="d-block">Like Dislike ratio</span>
@@ -129,15 +129,15 @@
                     </div>
                     
                   </div>
-                  </div>
-                  <div class="stats-3 d-inline">
+                  </div> --}}
+                  <div class="stats-3 d-block">
                     <div class="item like"><strong class="strong-sm"><div id="realtime-likes" class="odometer" style="font-size: 25px;color:darkseagreen;font-weight:100;">500</div></strong><span class="d-block span-sm">Likes</span>
                       <div class="line"></div><small>+</small></small><small id="realtime-likes-increment">+246</small>
                     </div>
-                    <hr />
-                    <div class="item dislike"><strong class="strong-sm"><div id="realtime-dislikes" class="odometer" style="font-size:25px;color:indianred;font-weight:100;">250</div></strong><span class="d-block span-sm">Dislikes</span>
+                    <small>With new youtube API update, dislikes are not visible anymore</small>
+                    {{!-- <div class="item dislike"><strong class="strong-sm"><div id="realtime-dislikes" class="odometer" style="font-size:25px;color:indianred;font-weight:100;">250</div></strong><span class="d-block span-sm">Dislikes</span>
                       <div class="line"></div><small>+</small><small id="realtime-dislikes-increment">+416</small>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
               <div class="public-user-block block">
