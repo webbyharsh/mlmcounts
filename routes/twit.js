@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 const fetch = require('node-fetch');
 
-var environment = require('dotenv').config({ path: './security/process.env' })
+var environment = require('dotenv').config({ path: './etc/secrets/process.env' })
 
 
 

@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { TextEncoder, TextDecoder } = require("util");
-var environment = require('dotenv').config({ path: './security/process.env' })
+var environment = require('dotenv').config({ path: './etc/secrets/process.env' })
 
 
 var indexRouter = require('./routes/index');
