@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { TextEncoder, TextDecoder } = require("util");
+var environment = require('dotenv').config({ path: './security/process.env' })
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/yt');
@@ -31,6 +34,7 @@ app.use('/instagram',instaRouter);
 app.use('/live-sub-count',test);
 
 
+console.log(environment.parsed.TEST_KEY);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

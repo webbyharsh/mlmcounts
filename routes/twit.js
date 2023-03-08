@@ -2,11 +2,14 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var Twitter=require('twitter');
+const fetch = require('node-fetch');
 
-var accesstoken="1005134180135550976-jZjl1dX8AwH9Z401iZqCbIBwHnyoWP";
-var accesstokensecret="ZV61Bc7OlZKaCjJKOzZ7Tbl3NOWvkanuCIJAUiSW6W6LT";
-var apikey="cgQNKb1yCW9Kv5vkwlJ28LD9O";
-var apisecretkey="SwDgcHW6VIvN1K50PAwI5NaWjA182llWfAkFJjFJdKKxWmsENL";
+var environment = require('dotenv').config({ path: './security/process.env' })
+
+var accesstoken = environment.parsed.TWITTER_ACCESS_TOKEN;
+var accesstokensecret = environment.parsed.TWITTER_ACCESS_TOKEN_SECRET;
+var apikey = environment.parsed.TWITTER_API_KEY;
+var apisecretkey = environment.parsed.TWITTER_API_KEY_SECRET;
 
 var client = new Twitter({
   consumer_key: apikey,
@@ -15,11 +18,9 @@ var client = new Twitter({
   access_token_secret: accesstokensecret
 });
 
-//var users_param={screen_name:"narendramodi"};
+
 
 router.get('/',(req,res,next)=>{
-    ///res.render('twitter-home');
-    //console.log(client);
     var query=req.query.username;
     if(query==""||req.query.username==null){
         res.render('twitter-home');
@@ -33,13 +34,33 @@ router.get('/',(req,res,next)=>{
 router.get('/api/',(req,res,next)=>{
     var username=req.query.name;
     var paramss={screen_name:username};
-    client.get("users/show",paramss,function(err,tweet,response){
+    client.get("2/users/show",paramss,function(err,tweet,response){
         if(!err){
             res.send(tweet);
         }else{
             res.send(err);
         }
     })
+})
+
+router.get('/api/v2', (req, res, next) => {
+
+  let username = req.query.name;
+  let url = 'https://api.twitter.com/2/users/by/username/' + username + '?user.fields=public_metrics,verified,profile_image_url,description';
+  fetch(url, {
+    method: "get",
+    headers: {'Authorization': 'Bearer ' + environment.parsed.TWITTER_BEARER_TOKEN}
+  }).then((data) => {
+    data.json()
+    .then((dataInJson) => {
+      res.send(dataInJson)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }).catch((err) =>{
+    console.log("error is "  + err);
+  })
 })
 
 
