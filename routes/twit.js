@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 const fetch = require('node-fetch');
 
-var environment = require('dotenv').config({ path: './etc/secrets/process.env' })
+var environment = require('dotenv').config()
 
 
 
@@ -38,7 +38,7 @@ router.get('/api/v2', (req, res, next) => {
   let url = 'https://api.twitter.com/2/users/by/username/' + username + '?user.fields=public_metrics,verified,profile_image_url,description';
   fetch(url, {
     method: "get",
-    headers: {'Authorization': 'Bearer ' + environment.parsed.TWITTER_BEARER_TOKEN}
+    headers: {'Authorization': 'Bearer ' + process.env.TWITTER_BEARER_TOKEN}
   }).then((data) => {
     data.json()
     .then((dataInJson) => {

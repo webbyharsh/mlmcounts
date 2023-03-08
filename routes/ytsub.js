@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
-var environment = require('dotenv').config({ path: './etc/secrets/process.env' })
+var environment = require('dotenv').config()
 // var path = require('path');
 // router.use(express.static(path.join(__dirname, 'public')));
 
@@ -45,7 +45,7 @@ router.get("/api/v2/:channelId", (req, res, next) => {
  * This method gets random api key from the list of api keys
  */
 function getApiKey(){
-    let apiKeyAsString = environment.parsed.YOUTUBE_API_KEY;
+    let apiKeyAsString = process.env.YOUTUBE_API_KEY;
     let apiKeyArray = apiKeyAsString.split(",");
     let size = apiKeyArray.length;
     let randomIndex = Math.floor(Math.random() * size);

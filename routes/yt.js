@@ -54,7 +54,7 @@ router.get("/api/v2/:videoId", (req, res, next) => {
  * This method gets random api key from the list of api keys
  */
 function getApiKey(){
-  let apiKeyAsString = environment.parsed.YOUTUBE_API_KEY;
+  let apiKeyAsString = process.env.YOUTUBE_API_KEY;
   let apiKeyArray = apiKeyAsString.split(",");
   let size = apiKeyArray.length;
   let randomIndex = Math.floor(Math.random() * size);
